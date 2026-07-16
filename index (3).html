@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ENDLESS AURA</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif;}
+body{
+background:linear-gradient(135deg,#000,#1a001f,#000);
+color:white;
+text-align:center;
+overflow:hidden;
+}
+
+#loading{
+position:fixed;
+width:100%;
+height:100%;
+background:black;
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:35px;
+font-weight:bold;
+color:#ff00ff;
+z-index:999;
+animation:fade 3s forwards;
+}
+
+@keyframes fade{
+0%,80%{opacity:1;}
+100%{opacity:0;visibility:hidden;}
+}
+
+.container{
+display:none;
+padding:20px;
+margin-top:50px;
+animation:show 1s;
+}
+
+@keyframes show{
+from{opacity:0;transform:scale(.8);}
+to{opacity:1;transform:scale(1);}
+}
+
+h1{
+color:#ff00ff;
+margin-bottom:20px;
+text-shadow:0 0 20px #ff00ff;
+}
+
+.card{
+background:rgba(255,255,255,.08);
+padding:20px;
+border-radius:15px;
+margin:15px;
+box-shadow:0 0 20px #ff00ff;
+}
+
+button{
+padding:12px 30px;
+margin:10px;
+border:none;
+border-radius:10px;
+background:#ff00ff;
+color:white;
+font-size:18px;
+cursor:pointer;
+}
+
+.page{display:none;}
+.active{display:block;}
+</style>
+</head>
+
+<body>
+
+<div id="loading">
+ENDLESS AURA<br>LOADING...
+</div>
+
+<div class="container" id="main">
+
+<h1>👑 ENDLESS AURA 👑</h1>
+
+<button onclick="openSite()">OPEN</button>
+<button onclick="closeSite()">CLOSE</button>
+
+<div id="website" style="display:none;">
+
+<div class="page active" id="p1">
+<div class="card">
+<h2>PAGE 1</h2>
+<h3>🔥 EK SABSE ACCHI BAAT 🔥</h3>
+<p>EGO EMPIRE APNA BETA HAI 😈</p>
+</div>
+</div>
+
+<div class="page" id="p2">
+<div class="card">
+<h2>MISSION</h2>
+<p>EGO / ZENITH KHTM KARNA HAI ⚔️</p>
+</div>
+</div>
+
+<div class="page" id="p3">
+<div class="card">
+<h2>RULES</h2>
+<p>
+✅ ENDLESS KE LIYE LOYAL RAHO.<br><br>
+✅ ENDLESS KE SAB MEMBERS KA SATH DO.<br><br>
+✅ KISI SE LADAI YA GALI-GALOCH MAT KARO.<br><br>
+✅ SAB EK FAMILY KI TARAH MILKAR RAHO.<br><br>
+✅ APNE GANG MEMBERS KO SUPPORT KARO.
+</p>
+</div>
+</div>
+
+<button onclick="prev()">⬅</button>
+<button onclick="next()">➡</button>
+
+</div>
+
+</div>
+
+<script>
+setTimeout(()=>{
+document.getElementById("main").style.display="block";
+},3000);
+
+function openSite(){
+document.getElementById("website").style.display="block";
+}
+
+function closeSite(){
+document.getElementById("website").style.display="none";
+}
+
+let pages=document.querySelectorAll(".page");
+let current=0;
+
+function show(i){
+pages.forEach(p=>p.classList.remove("active"));
+pages[i].classList.add("active");
+}
+
+function next(){
+current=(current+1)%pages.length;
+show(current);
+}
+
+function prev(){
+current=(current-1+pages.length)%pages.length;
+show(current);
+}
+</script>
+
+</body>
+</html>
